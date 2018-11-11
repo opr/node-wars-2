@@ -2,7 +2,7 @@ import {expect} from 'chai';
 import sinon from 'sinon';
 import sinonTest from 'sinon-test';
 import {Map} from 'immutable';
-import GW2Api from '../../src/index';
+import GW2Api from '../../src/GW2Api';
 
 describe('Main class', () => {
   const test = sinonTest(sinon);

@@ -6,7 +6,9 @@
   "author": "opr",
   "license": "MIT",
   "scripts": {
-    "start": "@babel-node test-app/index.js"
+    "start": "@babel-node test-app/index.js",
+    "type-check": "tsc",
+    "test": "cross-env NODE_ENV=test BABEL_ENV=test nyc --all mocha --recursive ./test"
   },
   "dependencies": {
     "superagent": "^4.0.0-beta.5"
@@ -18,13 +20,42 @@
     "@babel/preset-env": "^7.0.0-rc.1",
     "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0-rc.1",
+    "@types/node": "^10.12.5",
+    "babel-plugin-istanbul": "^5.1.0",
     "babel-plugin-transform-object-rest-spread": "^7.0.0-beta.3",
     "chai": "^4.2.0",
     "chai-immutable": "^1.6.0",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.9.0",
     "immutable": "^4.0.0-rc.12",
     "mocha": "^5.2.0",
+    "moment": "^2.22.2",
+    "nyc": "^13.1.0",
     "sinon": "^7.1.1",
     "sinon-test": "^2.4.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.1.6"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts",
+      "src/**/*.tsx"
+    ],
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "require": [
+      "ts-node/register",
+      "@babel/register"
+    ],
+    "reporter": [
+      "lcov",
+      "text",
+      "cobertura",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true
   }
 }
